@@ -1,0 +1,4 @@
+﻿Access the spreadsheet at /Users/femisokoya/Documents/GitHub/Buses/bus01 (2).xlsx
+worksheet BUS01e
+delete rows 1-7 and column 16
+save the result in a csv file ‘test.csv’

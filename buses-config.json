@@ -1,0 +1,37 @@
+{
+    "$schema": "https://purl.org/csv-cubed/qube-config/v1",
+    "title": "Passenger journeys on local bus services",
+    "description": "Elderly and disabled concessionary passenger journeys on local bus services by local authority: England, annual from 2009/10",
+    "creator": "https://www.gov.uk/government/organisations/department-for-transport",
+    "publisher": "https://www.gov.uk/government/organisations/department-for-transport",
+    "license": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "keywords": [
+      "Buses",
+      "Journeys",
+      "Services",
+      "Local"
+    ],
+    "themes": "https://www.gov.uk/government/statistical-data-sets/bus-statistics-data-tables",
+    "columns": {
+      "LA Code": {
+        "from_template": "statistical-geography"
+      },
+      "Region": false,
+      "Period": {
+        "type": "dimension"
+      },
+      "Number of Journeys": {
+        "type": "observations",
+        "measure": {
+          "label": "Number of passenger journeys in millions on local bus services by local authority",
+          "from_existing": "https://purl.org/csv-cubed/resources/measures#count"
+        },
+        "data_type": "float",
+        "unit": {
+          "label": "Number",
+          "from_existing": "http://qudt.org/vocab/unit/NUM"
+        }
+      }
+    }
+  }
+  

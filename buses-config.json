@@ -16,14 +16,15 @@
       "LA Code": {
         "from_template": "statistical-geography"
       },
-      "Region": false,
-      "Period": {
-        "type": "dimension"
+      "Local Authority/ Region": false,
+      "Notes": {"from_template": "observation-status"
       },
-      "Number of Journeys": {
+      "Period": {"from_template": "government-year"
+      },
+      "Numerical": {
         "type": "observations",
         "measure": {
-          "label": "Number of passenger journeys in millions on local bus services by local authority",
+          "label": "Number of passenger journeys in millions",
           "from_existing": "https://purl.org/csv-cubed/resources/measures#count"
         },
         "data_type": "float",

@@ -1,0 +1,631 @@
+{
+    "@context": "http://www.w3.org/ns/csvw",
+    "@id": "passenger-journeys-on-local-bus-services.csv#dataset",
+    "tables": [
+        {
+            "url": "passenger-journeys-on-local-bus-services.csv",
+            "tableSchema": {
+                "columns": [
+                    {
+                        "titles": "LA Code",
+                        "name": "la_code",
+                        "propertyUrl": "passenger-journeys-on-local-bus-services.csv#dimension/statistical-geography",
+                        "valueUrl": "http://statistics.data.gov.uk/id/statistical-geography/{+la_code}",
+                        "required": true
+                    },
+                    {
+                        "titles": "Local Authority/ Region",
+                        "name": "local_authority_region",
+                        "suppressOutput": true
+                    },
+                    {
+                        "titles": "Notes",
+                        "name": "notes",
+                        "aboutUrl": "passenger-journeys-on-local-bus-services.csv#obs/{la_code},{period}@number-of-passenger-journeys-in-millions",
+                        "propertyUrl": "passenger-journeys-on-local-bus-services.csv#attribute/observation-status",
+                        "valueUrl": "passenger-journeys-on-local-bus-services.csv#attribute/observation-status/{+notes}",
+                        "required": false
+                    },
+                    {
+                        "titles": "Period",
+                        "name": "period",
+                        "propertyUrl": "passenger-journeys-on-local-bus-services.csv#dimension/government-year",
+                        "valueUrl": "government-year.csv#{+period}",
+                        "required": true
+                    },
+                    {
+                        "titles": "Numerical",
+                        "name": "numerical",
+                        "aboutUrl": "passenger-journeys-on-local-bus-services.csv#obs/{la_code},{period}@number-of-passenger-journeys-in-millions",
+                        "propertyUrl": "passenger-journeys-on-local-bus-services.csv#measure/number-of-passenger-journeys-in-millions",
+                        "datatype": "float",
+                        "required": false
+                    },
+                    {
+                        "name": "virt_slice",
+                        "virtual": true,
+                        "propertyUrl": "rdf:type",
+                        "valueUrl": "qb:Slice"
+                    },
+                    {
+                        "name": "virt_slice_structure",
+                        "virtual": true,
+                        "propertyUrl": "qb:sliceStructure",
+                        "valueUrl": "passenger-journeys-on-local-bus-services.csv#slice/cross-measures"
+                    },
+                    {
+                        "name": "virt_obs_numerical",
+                        "virtual": true,
+                        "propertyUrl": "qb:observation",
+                        "valueUrl": "passenger-journeys-on-local-bus-services.csv#obs/{la_code},{period}@number-of-passenger-journeys-in-millions"
+                    },
+                    {
+                        "name": "virt_obs_numerical_meas",
+                        "virtual": true,
+                        "aboutUrl": "passenger-journeys-on-local-bus-services.csv#obs/{la_code},{period}@number-of-passenger-journeys-in-millions",
+                        "propertyUrl": "qb:measureType",
+                        "valueUrl": "passenger-journeys-on-local-bus-services.csv#measure/number-of-passenger-journeys-in-millions"
+                    },
+                    {
+                        "name": "virt_obs_numerical_unit",
+                        "virtual": true,
+                        "aboutUrl": "passenger-journeys-on-local-bus-services.csv#obs/{la_code},{period}@number-of-passenger-journeys-in-millions",
+                        "propertyUrl": "http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure",
+                        "valueUrl": "passenger-journeys-on-local-bus-services.csv#unit/number"
+                    },
+                    {
+                        "name": "virt_dim_numerical_la_code",
+                        "virtual": true,
+                        "aboutUrl": "passenger-journeys-on-local-bus-services.csv#obs/{la_code},{period}@number-of-passenger-journeys-in-millions",
+                        "propertyUrl": "passenger-journeys-on-local-bus-services.csv#dimension/statistical-geography",
+                        "valueUrl": "http://statistics.data.gov.uk/id/statistical-geography/{+la_code}"
+                    },
+                    {
+                        "name": "virt_dim_numerical_period",
+                        "virtual": true,
+                        "aboutUrl": "passenger-journeys-on-local-bus-services.csv#obs/{la_code},{period}@number-of-passenger-journeys-in-millions",
+                        "propertyUrl": "passenger-journeys-on-local-bus-services.csv#dimension/government-year",
+                        "valueUrl": "government-year.csv#{+period}"
+                    },
+                    {
+                        "name": "virt_obs_numerical_type",
+                        "virtual": true,
+                        "aboutUrl": "passenger-journeys-on-local-bus-services.csv#obs/{la_code},{period}@number-of-passenger-journeys-in-millions",
+                        "propertyUrl": "rdf:type",
+                        "valueUrl": "qb:Observation"
+                    },
+                    {
+                        "name": "virt_dataSet_numerical",
+                        "virtual": true,
+                        "aboutUrl": "passenger-journeys-on-local-bus-services.csv#obs/{la_code},{period}@number-of-passenger-journeys-in-millions",
+                        "propertyUrl": "qb:dataSet",
+                        "valueUrl": "passenger-journeys-on-local-bus-services.csv#dataset"
+                    }
+                ],
+                "foreignKeys": [
+                    {
+                        "columnReference": "period",
+                        "reference": {
+                            "resource": "government-year.csv",
+                            "columnReference": "uri_identifier"
+                        }
+                    }
+                ],
+                "primaryKey": [
+                    "la_code",
+                    "period"
+                ],
+                "aboutUrl": "passenger-journeys-on-local-bus-services.csv#slice/{la_code},{period}"
+            }
+        },
+        {
+            "url": "government-year.csv",
+            "tableSchema": "government-year.table.json",
+            "suppressOutput": true
+        }
+    ],
+    "rdfs:seeAlso": [
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#component/observation-status",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSpecification",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentSet"
+            ],
+            "http://purl.org/linked-data/cube#attribute": [
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#attribute/observation-status"
+                }
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#attribute/observation-status"
+                }
+            ],
+            "http://purl.org/linked-data/cube#componentRequired": [
+                {
+                    "@value": false
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 2
+                }
+            ]
+        },
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#component/statistical-geography",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSpecification",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentSet"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#dimension/statistical-geography"
+                }
+            ],
+            "http://purl.org/linked-data/cube#dimension": [
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#dimension/statistical-geography"
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 1
+                }
+            ]
+        },
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#class/government-year",
+            "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Class",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ]
+        },
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#component/measure-type",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSpecification",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentSet"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "http://purl.org/linked-data/cube#measureType"
+                }
+            ],
+            "http://purl.org/linked-data/cube#dimension": [
+                {
+                    "@id": "http://purl.org/linked-data/cube#measureType"
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 4
+                }
+            ]
+        },
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#dimension/government-year",
+            "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#DimensionProperty",
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+                "http://purl.org/linked-data/cube#ComponentProperty",
+                "http://purl.org/linked-data/cube#CodedProperty"
+            ],
+            "http://purl.org/linked-data/cube#codeList": [
+                {
+                    "@id": "government-year.csv#code-list"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "government Year"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#range": [
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#class/government-year"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+                {
+                    "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod"
+                }
+            ]
+        },
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#csvcubed-build-activity",
+            "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://www.w3.org/ns/prov#Activity"
+            ],
+            "http://www.w3.org/ns/prov#used": [
+                {
+                    "@id": "https://github.com/GSS-Cogs/csvcubed/releases/tag/v0.4.4"
+                }
+            ]
+        },
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#slice/cross-measures",
+            "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#SliceKey",
+                "http://purl.org/linked-data/cube#ComponentSet"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#dimension/statistical-geography"
+                },
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#dimension/government-year"
+                }
+            ]
+        },
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#dimension/statistical-geography",
+            "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#DimensionProperty",
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+                "http://purl.org/linked-data/cube#ComponentProperty",
+                "http://purl.org/linked-data/cube#CodedProperty"
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "Statistical Geography"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#range": [
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#class/statistical-geography"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+                {
+                    "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refArea"
+                }
+            ]
+        },
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#dataset",
+            "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://www.w3.org/ns/dcat#Resource",
+                "http://purl.org/linked-data/cube#DataSet",
+                "http://www.w3.org/ns/dcat#Dataset",
+                "http://purl.org/linked-data/cube#Attachable"
+            ],
+            "http://purl.org/dc/terms/creator": [
+                {
+                    "@id": "https://www.gov.uk/government/organisations/department-for-transport"
+                }
+            ],
+            "http://purl.org/dc/terms/description": [
+                {
+                    "@type": "https://www.w3.org/ns/iana/media-types/text/markdown#Resource",
+                    "@value": "Elderly and disabled concessionary passenger journeys on local bus services by local authority: England, annual from 2009/10"
+                }
+            ],
+            "http://purl.org/dc/terms/identifier": [
+                {
+                    "@value": "Passenger journeys on local bus services"
+                }
+            ],
+            "http://purl.org/dc/terms/issued": [
+                {
+                    "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+                    "@value": "2023-07-19T21:33:33.745393"
+                }
+            ],
+            "http://purl.org/dc/terms/license": [
+                {
+                    "@id": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+                }
+            ],
+            "http://purl.org/dc/terms/modified": [
+                {
+                    "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+                    "@value": "2023-07-19T21:33:33.745393"
+                }
+            ],
+            "http://purl.org/dc/terms/publisher": [
+                {
+                    "@id": "https://www.gov.uk/government/organisations/department-for-transport"
+                }
+            ],
+            "http://purl.org/dc/terms/title": [
+                {
+                    "@language": "en",
+                    "@value": "Passenger journeys on local bus services"
+                }
+            ],
+            "http://purl.org/linked-data/cube#structure": [
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#structure"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "Passenger journeys on local bus services"
+                }
+            ],
+            "http://www.w3.org/ns/dcat#keyword": [
+                {
+                    "@language": "en",
+                    "@value": "Buses"
+                },
+                {
+                    "@language": "en",
+                    "@value": "Services"
+                },
+                {
+                    "@language": "en",
+                    "@value": "Local"
+                },
+                {
+                    "@language": "en",
+                    "@value": "Journeys"
+                }
+            ],
+            "http://www.w3.org/ns/dcat#theme": [
+                {
+                    "@id": "https://www.gov.uk/government/statistical-data-sets/bus-statistics-data-tables"
+                }
+            ],
+            "http://www.w3.org/ns/prov#wasGeneratedBy": [
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#csvcubed-build-activity"
+                }
+            ]
+        },
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#component/government-year",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSpecification",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentSet"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#dimension/government-year"
+                }
+            ],
+            "http://purl.org/linked-data/cube#dimension": [
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#dimension/government-year"
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 3
+                }
+            ]
+        },
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#measure/number-of-passenger-journeys-in-millions",
+            "@type": [
+                "http://purl.org/linked-data/cube#MeasureProperty",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentProperty",
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "Number of passenger journeys in millions"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#range": [
+                {
+                    "@id": "http://www.w3.org/2001/XMLSchema#float"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+                {
+                    "@id": "https://purl.org/csv-cubed/resources/measures#count"
+                }
+            ]
+        },
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#component/unit",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSpecification",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentSet"
+            ],
+            "http://purl.org/linked-data/cube#attribute": [
+                {
+                    "@id": "http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure"
+                }
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure"
+                }
+            ],
+            "http://purl.org/linked-data/cube#componentRequired": [
+                {
+                    "@value": true
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 5
+                }
+            ]
+        },
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#class/statistical-geography",
+            "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Class",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ]
+        },
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#structure",
+            "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentSet",
+                "http://purl.org/linked-data/cube#DataStructureDefinition"
+            ],
+            "http://purl.org/linked-data/cube#component": [
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#component/unit"
+                },
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#component/statistical-geography"
+                },
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#component/measure-type"
+                },
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#component/number-of-passenger-journeys-in-millions"
+                },
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#component/observation-status"
+                },
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#component/government-year"
+                }
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#dimension/statistical-geography"
+                },
+                {
+                    "@id": "http://purl.org/linked-data/cube#measureType"
+                },
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#attribute/observation-status"
+                },
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#measure/number-of-passenger-journeys-in-millions"
+                },
+                {
+                    "@id": "http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure"
+                },
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#dimension/government-year"
+                }
+            ],
+            "http://purl.org/linked-data/cube#sliceKey": [
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#slice/cross-measures"
+                }
+            ]
+        },
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#component/number-of-passenger-journeys-in-millions",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSpecification",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentSet"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#measure/number-of-passenger-journeys-in-millions"
+                }
+            ],
+            "http://purl.org/linked-data/cube#measure": [
+                {
+                    "@id": "passenger-journeys-on-local-bus-services.csv#measure/number-of-passenger-journeys-in-millions"
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 6
+                }
+            ]
+        },
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#attribute/observation-status",
+            "@type": [
+                "http://purl.org/linked-data/cube#AttributeProperty",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentProperty",
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "Observation Status"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+                {
+                    "@id": "http://purl.org/linked-data/sdmx/2009/attribute#obsStatus"
+                }
+            ]
+        },
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#dependency/government-year",
+            "@type": [
+                "http://rdfs.org/ns/void#Dataset",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://rdfs.org/ns/void#dataDump": [
+                {
+                    "@id": "./government-year.csv-metadata.json"
+                }
+            ],
+            "http://rdfs.org/ns/void#uriSpace": [
+                {
+                    "@value": "government-year.csv#"
+                }
+            ]
+        },
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#attribute/observation-status/not-applicable",
+            "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "not applicable"
+                }
+            ]
+        },
+        {
+            "@id": "passenger-journeys-on-local-bus-services.csv#unit/number",
+            "@type": [
+                "http://qudt.org/schema/qudt/Unit",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://www.ontology-of-units-of-measure.org/resource/om-2/Unit"
+            ],
+            "http://qudt.org/schema/qudt/isScalingOf": [
+                {
+                    "@id": "http://qudt.org/vocab/unit/NUM"
+                }
+            ],
+            "http://www.ontology-of-units-of-measure.org/resource/om-2/hasFactor": [
+                {
+                    "@type": "http://www.w3.org/2001/XMLSchema#float",
+                    "@value": "1.0"
+                }
+            ],
+            "http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit": [
+                {
+                    "@id": "http://qudt.org/vocab/unit/NUM"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+                {
+                    "@id": "http://qudt.org/vocab/unit/NUM"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "Number"
+                }
+            ]
+        }
+    ]
+}
